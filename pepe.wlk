@@ -1,42 +1,48 @@
 object pepe {
-	const categoria = cadete // null
+	var categoria = cadete
 	var tipoDeBono  = nulo    //el objeto nulo
+	var faltas = 0
 
 
 	method sueldo() = self.sueldoNeto() + 
-					  self.bonoPorResultados()
+					  self.bonoPorResultados() + 
 					  self.bonoPorPresentismo()
 
 	method sueldoNeto() = categoria.sueldo()
 
-	method bonoPorResultados() = if (tipoDeBono == porcentaje){
-		(self.sueldoNeto() * tipoDeBono.valor()) / 100   // multiplica el número por el porcentaje y divide el resultado entre 100
-	} else{
-		tipoDeBono.valor()   //idem para devolver 800 (del monto fijo) y 0 (del bono nulo)
-	} 
+	method bonoPorResultados() = tipoDeBono.valor(self.sueldoNeto())
 
 	method tipoDeBono(_tipoDeBono){
 		tipoDeBono = _tipoDeBono
 	}
 
-	method bonoPorPresentismo() = 
+	method bonoPorPresentismo() = 0
 
-	method categoria(_cat) {
+	method categoria(_cat){
 		categoria = _cat
+	}
+
+	method faltas(_faltas){
+		faltas = _faltas
 	}
 }
 
 // ====================== TIPO DE BONOS POR RESULTADOS =======================
 object porcentaje {
-	method valor() = 10
+	var porcentaje = 10
+
+	method valor(neto) = neto * porcentaje / 100
+	method porcentaje(_porcentaje){
+		porcentaje = _porcentaje
+	}
 }
 
 object montoFijo {
-	method valor() = 800
+	method valor(neto) = 800
 }
 
 object nulo {
-	method valor() = 0
+	method valor(neto) = 0
 }
 
 // ====================== CATEGORIAS =====================
