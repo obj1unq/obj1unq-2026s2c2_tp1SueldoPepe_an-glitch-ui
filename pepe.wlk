@@ -1,3 +1,4 @@
+// ============================== EMPLEADOS ==========================
 object pepe {
 	var categoria = cadete
 	var tipoDeBonoPorResultados  = resultadosNulo    //el objeto nulo
@@ -29,6 +30,58 @@ object pepe {
 
 	method tipoDeBonoPorPresentismo(_tipoDeBonoPorPresentismo) {
 	    tipoDeBonoPorPresentismo = _tipoDeBonoPorPresentismo
+	}
+}
+
+object moria {
+	var categoria = cadete
+	var tipoDeBonoPorResultados = resultadosNulo
+
+
+	method sueldo() = self.sueldoNeto() + self.bonoPorResultados()
+
+	method sueldoNeto() = categoria.sueldo() * 1.3
+
+	method bonoPorResultados() = tipoDeBonoPorResultados.valor(self.sueldoNeto())
+
+	method categoria(_cat){
+		categoria = _cat
+	}
+
+	method tipoDeBonoPorResultados(_tipoDeBonoPorResultados){
+		tipoDeBonoPorResultados = _tipoDeBonoPorResultados
+	}
+}
+
+object roque{
+	var tipoDeBonoPorResultados = resultadosNulo
+
+
+	method sueldo() = self.sueldoNeto() + self.bonoPorResultados() + 9000
+
+	method bonoPorResultados() = tipoDeBonoPorResultados
+
+	method tipoDeBonoPorResultados(_tipoDeBonoPorResultados){
+		tipoDeBonoPorResultados = _tipoDeBonoPorResultados
+	}
+
+	method sueldoNeto() = 28000
+}
+
+object ernesto{
+	var compañero = roque
+	const faltas = 0
+	var tipoDeBonoPorPresentismo = presentismoNulo
+
+
+	method sueldo() = self.sueldoNeto() + self.tipoDeBonoPorPresentismo()
+
+	method bonoPorPresentismo() = tipoDeBonoPorPresentismo.valor(faltas, self.sueldoNeto())
+
+	method sueldoNeto() = compañero.sueldo()
+
+	method compañero(_compañero){
+		compañero = _compañero
 	}
 }
 
@@ -90,5 +143,28 @@ object cadete {
 	method sueldo() = 20000
 }
 
+object vendedor {
+	var mogollonDeVentas = false
 
+
+	method sueldo() = if (mogollonDeVentas){
+		16000 * 1.25
+	} else{
+		16000
+	}
+
+	method activarAumentoPorMuchasVentas() {
+		mogollonDeVentas = true
+	}
+
+	method desactivarAumentoPorMuchasVentas(){
+		mogollonDeVentas = false
+	}
+}
+
+object medioTiempo {
+	method categoriaBase(categoria){
+		return categoria.sueldo()/2
+	}
+}
 

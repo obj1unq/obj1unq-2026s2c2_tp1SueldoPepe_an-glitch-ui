@@ -1,11 +1,38 @@
 import pepe.*
 
 describe "Sueldo Pepe" {
-	test "1ra PARTE" {
+	test "1ra PARTE: 1" {
+		pepe.faltas(3)
 		pepe.tipoDeBonoPorResultados(resultadosMontoFijo)
 		pepe.tipoDeBonoPorPresentismo(presentismoNormal)
-		pepe.faltas(3)
 
-		assert.equals(20800, pepe.sueldoNeto())   // 1
+		assert.equals(20800, pepe.sueldoNeto())
+	}
+
+	test "1ra PARTE: 2" {
+		pepe.faltas(3)
+		pepe.categoria(gerente)
+		pepe.tipoDeBonoPorResultados(resultadosPorcentaje)
+		pepe.tipoDeBonoPorPresentismo(presentismoNormal)
+
+		assert.equals(16500, pepe.sueldoNeto())
+	}
+
+	test "1ra PARTE: 3" {
+		pepe.faltas(0)
+		pepe.categoria(cadete)
+		pepe.tipoDeBonoPorResultados(resultadosPorcentaje)
+		pepe.tipoDeBonoPorPresentismo(presentismoNormal)
+
+		assert.equals(24000, pepe.sueldoNeto())
+	}
+
+	test "1ra PARTE: 4" {
+		pepe.faltas(1)
+		pepe.categoria(cadete)
+		pepe.tipoDeBonoPorResultados(resultadosPorcentaje)
+		pepe.tipoDeBonoPorPresentismo(presentismoNormal)
+
+		assert.equals(23000, pepe.sueldoNeto())
 	}
 }
