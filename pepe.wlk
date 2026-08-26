@@ -1,7 +1,8 @@
 object pepe {
 	var categoria = cadete
-	var tipoDeBono  = nulo    //el objeto nulo
+	var tipoDeBonoPorResultados  = resultadosNulo    //el objeto nulo
 	var faltas = 0
+	var tipoDeBonoPorPresentismo = presentismoNulo
 
 
 	method sueldo() = self.sueldoNeto() + 
@@ -10,13 +11,13 @@ object pepe {
 
 	method sueldoNeto() = categoria.sueldo()
 
-	method bonoPorResultados() = tipoDeBono.valor(self.sueldoNeto())
+	method bonoPorResultados() = tipoDeBonoPorResultados.valor(self.sueldoNeto())
 
-	method tipoDeBono(_tipoDeBono){
-		tipoDeBono = _tipoDeBono
+	method tipoDeBonoPorResultados(_tipoDeBonoPorResultados){
+		tipoDeBonoPorResultados = _tipoDeBonoPorResultados
 	}
 
-	method bonoPorPresentismo() = 0
+	method bonoPorPresentismo() = tipoDeBonoPorPresentismo.valor(faltas, self.sueldoNeto())
 
 	method categoria(_cat){
 		categoria = _cat
@@ -25,10 +26,14 @@ object pepe {
 	method faltas(_faltas){
 		faltas = _faltas
 	}
+
+	method tipoDeBonoPorPresentismo(_tipoDeBonoPorPresentismo) {
+	    tipoDeBonoPorPresentismo = _tipoDeBonoPorPresentismo
+	}
 }
 
 // ====================== TIPO DE BONOS POR RESULTADOS =======================
-object porcentaje {
+object resultadosPorcentaje {
 	var porcentaje = 10
 
 	method valor(neto) = neto * porcentaje / 100
@@ -37,12 +42,43 @@ object porcentaje {
 	}
 }
 
-object montoFijo {
+object resultadosMontoFijo {
 	method valor(neto) = 800
 }
 
-object nulo {
+object resultadosNulo {
 	method valor(neto) = 0
+}
+
+// ======================= TIPO DE BONOS POR PRESENTISMO ===========================
+object presentismoNormal {
+	method valor(cantFaltas, neto) = if (cantFaltas == 0){
+		2000
+	} else if (cantFaltas == 1){
+		1000
+	} else{
+		0
+	}
+}
+
+object presentismoAjuste {
+	method valor(cantFaltas, neto) = if (cantFaltas == 0){
+		100
+	} else {
+		0
+	}
+}
+
+object presentismoDemagogico {
+	method valor(cantFaltas, neto) = if (neto < 18000){
+		500
+	} else{
+		300
+	}
+}
+
+object presentismoNulo {
+	method valor(cantFaltas, neto) = 0
 }
 
 // ====================== CATEGORIAS =====================

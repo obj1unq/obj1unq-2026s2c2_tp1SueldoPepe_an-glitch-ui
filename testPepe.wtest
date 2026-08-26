@@ -1,10 +1,11 @@
 import pepe.*
 
 describe "Sueldo Pepe" {
-	
-	test "Test 1" {
-		//TODO: Implementame
-	}
+	test "1ra PARTE" {
+		pepe.tipoDeBonoPorResultados(resultadosMontoFijo)
+		pepe.tipoDeBonoPorPresentismo(presentismoNormal)
+		pepe.faltas(3)
 
-	
+		assert.equals(20800, pepe.sueldoNeto())   // 1
+	}
 }
