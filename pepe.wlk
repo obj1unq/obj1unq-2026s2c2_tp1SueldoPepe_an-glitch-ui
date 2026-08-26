@@ -74,9 +74,13 @@ object ernesto{
 	var tipoDeBonoPorPresentismo = presentismoNulo
 
 
-	method sueldo() = self.sueldoNeto() + self.tipoDeBonoPorPresentismo()
+	method sueldo() = self.sueldoNeto() + self.bonoPorPresentismo()
 
 	method bonoPorPresentismo() = tipoDeBonoPorPresentismo.valor(faltas, self.sueldoNeto())
+
+	method tipoDeBonoPorPresentismo(_tipoDeBonoPorPresentismo){
+		tipoDeBonoPorPresentismo = _tipoDeBonoPorPresentismo
+	}
 
 	method sueldoNeto() = compañero.sueldo()
 
@@ -90,6 +94,7 @@ object resultadosPorcentaje {
 	var porcentaje = 10
 
 	method valor(neto) = neto * porcentaje / 100
+
 	method porcentaje(_porcentaje){
 		porcentaje = _porcentaje
 	}
@@ -163,8 +168,39 @@ object vendedor {
 }
 
 object medioTiempo {
-	method categoriaBase(categoria){
-		return categoria.sueldo()/2
+	var categoriaBase = cadete
+
+
+	method sueldo(){
+		return categoriaBase.sueldo()/2
+	}
+
+	method categoriaBase(_categoriaBase){
+		categoriaBase = _categoriaBase
 	}
 }
 
+
+
+/*
+~~ EJERCICIOS DE REFLEXIÓN Y DOCUMENTACIÓN ~~ 
+
+Tipo de los objetos polimórficos: 
+-Empleado (para los objetos pepe, moria, roque y ernesto)
+-Bono por presentismo (para los objetos normal, ajuste, demagogico y nulo)
+-Bono por resultados (para los objetos porcentaje, montoFijo y nulo)
+-Categoria (para los objetos gerente, cadete, vendedor y medioTiempo)
+
+Mensajes que conforman esos tipos:
+-Empleado: sueldo(), sueldoNeto()
+-Bono: valor()
+-Categoria: sueldo()
+
+Emisores de los mensajes polimórficos:
+bonoPresentismo.valor(faltas, neto) emitido por el tipo Empleado para saber el valor del tipo de bono que tiene asignado
+bonoResultados.valor(neto) emitido por el tipo Empleado para saber el valor que corresponda según el tipo que se le asigne al empleado
+categoria.sueldo() emitido por el tipo Empleado para saber el sueldo que corresponda a la categoría asignada
+
+mensaje de orden: activarAumentoPorMuchasVentas() del objecto 'vendedor'
+mensaje de consulta: sueldo() de cualquier categoría, por ejemplo, del objeto 'gerente'
+*/

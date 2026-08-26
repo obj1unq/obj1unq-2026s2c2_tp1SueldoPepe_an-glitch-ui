@@ -35,4 +35,21 @@ describe "Sueldo Pepe" {
 
 		assert.equals(23000, pepe.sueldoNeto())
 	}
+
+	test "Casos de Prueba, última parte." {
+		medioTiempo.categoriaBase(cadete)
+		pepe.categoria(medioTiempo)
+		pepe.faltas(1)
+		pepe.tipoDeBonoPorResultados(resultadosPorcentaje)
+		pepe.tipoDeBonoPorPresentismo(presentismoDemagogico)
+
+		roque.tipoDeBonoPorResultados(resultadosMontoFijo)
+
+		ernesto.compañero(pepe)
+		ernesto.tipoDeBonoPorPresentismo(presentismoAjuste)
+
+		assert.equals(11500, pepe.sueldoNeto())
+		assert.equals(37800, roque.sueldoNeto())
+		assert.equals(10100, ernesto.sueldoNeto())
+	}
 }
