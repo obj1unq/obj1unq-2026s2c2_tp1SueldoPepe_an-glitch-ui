@@ -6,17 +6,11 @@ object pepe {
 	var tipoDeBonoPorPresentismo = presentismoNulo
 
 
-	method sueldo() = self.sueldoNeto() + 
-					  self.bonoPorResultados() + 
-					  self.bonoPorPresentismo()
+	method sueldo() = self.sueldoNeto() + self.bonoPorResultados() + self.bonoPorPresentismo()
 
 	method sueldoNeto() = categoria.sueldo()
 
 	method bonoPorResultados() = tipoDeBonoPorResultados.valor(self.sueldoNeto())
-
-	method tipoDeBonoPorResultados(_tipoDeBonoPorResultados){
-		tipoDeBonoPorResultados = _tipoDeBonoPorResultados
-	}
 
 	method bonoPorPresentismo() = tipoDeBonoPorPresentismo.valor(faltas, self.sueldoNeto())
 
@@ -26,6 +20,10 @@ object pepe {
 
 	method faltas(_faltas){
 		faltas = _faltas
+	}
+
+	method tipoDeBonoPorResultados(_tipoDeBonoPorResultados){
+		tipoDeBonoPorResultados = _tipoDeBonoPorResultados
 	}
 
 	method tipoDeBonoPorPresentismo(_tipoDeBonoPorPresentismo) {
@@ -59,7 +57,7 @@ object roque{
 
 	method sueldo() = self.sueldoNeto() + self.bonoPorResultados() + 9000
 
-	method bonoPorResultados() = tipoDeBonoPorResultados
+	method bonoPorResultados() = tipoDeBonoPorResultados.valor(self.sueldoNeto())
 
 	method tipoDeBonoPorResultados(_tipoDeBonoPorResultados){
 		tipoDeBonoPorResultados = _tipoDeBonoPorResultados
@@ -82,7 +80,7 @@ object ernesto{
 		tipoDeBonoPorPresentismo = _tipoDeBonoPorPresentismo
 	}
 
-	method sueldoNeto() = compañero.sueldo()
+	method sueldoNeto() = compañero.sueldoNeto()
 
 	method compañero(_compañero){
 		compañero = _compañero

@@ -6,7 +6,7 @@ describe "Sueldo Pepe" {
 		pepe.tipoDeBonoPorResultados(resultadosMontoFijo)
 		pepe.tipoDeBonoPorPresentismo(presentismoNormal)
 
-		assert.equals(20800, pepe.sueldoNeto())
+		assert.equals(20800, pepe.sueldo())
 	}
 
 	test "1ra PARTE: 2" {
@@ -15,7 +15,7 @@ describe "Sueldo Pepe" {
 		pepe.tipoDeBonoPorResultados(resultadosPorcentaje)
 		pepe.tipoDeBonoPorPresentismo(presentismoNormal)
 
-		assert.equals(16500, pepe.sueldoNeto())
+		assert.equals(16500, pepe.sueldo())
 	}
 
 	test "1ra PARTE: 3" {
@@ -24,7 +24,7 @@ describe "Sueldo Pepe" {
 		pepe.tipoDeBonoPorResultados(resultadosPorcentaje)
 		pepe.tipoDeBonoPorPresentismo(presentismoNormal)
 
-		assert.equals(24000, pepe.sueldoNeto())
+		assert.equals(24000, pepe.sueldo())
 	}
 
 	test "1ra PARTE: 4" {
@@ -33,7 +33,7 @@ describe "Sueldo Pepe" {
 		pepe.tipoDeBonoPorResultados(resultadosPorcentaje)
 		pepe.tipoDeBonoPorPresentismo(presentismoNormal)
 
-		assert.equals(23000, pepe.sueldoNeto())
+		assert.equals(23000, pepe.sueldo())
 	}
 
 	test "Casos de Prueba, última parte." {
@@ -48,8 +48,8 @@ describe "Sueldo Pepe" {
 		ernesto.compañero(pepe)
 		ernesto.tipoDeBonoPorPresentismo(presentismoAjuste)
 
-		assert.equals(11500, pepe.sueldoNeto())
-		assert.equals(37800, roque.sueldoNeto())
-		assert.equals(10100, ernesto.sueldoNeto())
+		assert.equals(11500, pepe.sueldo())
+		assert.equals(37800, roque.sueldo())
+		assert.equals(10100, ernesto.sueldo())
 	}
 }
