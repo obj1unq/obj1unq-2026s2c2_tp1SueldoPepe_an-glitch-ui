@@ -1,10 +1,55 @@
 import pepe.*
 
 describe "Sueldo Pepe" {
-	
-	test "Test 1" {
-		//TODO: Implementame
+	test "1ra PARTE: 1" {
+		pepe.faltas(3)
+		pepe.tipoDeBonoPorResultados(resultadosMontoFijo)
+		pepe.tipoDeBonoPorPresentismo(presentismoNormal)
+
+		assert.equals(20800, pepe.sueldo())
 	}
 
-	
+	test "1ra PARTE: 2" {
+		pepe.faltas(3)
+		pepe.categoria(gerente)
+		pepe.tipoDeBonoPorResultados(resultadosPorcentaje)
+		pepe.tipoDeBonoPorPresentismo(presentismoNormal)
+
+		assert.equals(16500, pepe.sueldo())
+	}
+
+	test "1ra PARTE: 3" {
+		pepe.faltas(0)
+		pepe.categoria(cadete)
+		pepe.tipoDeBonoPorResultados(resultadosPorcentaje)
+		pepe.tipoDeBonoPorPresentismo(presentismoNormal)
+
+		assert.equals(24000, pepe.sueldo())
+	}
+
+	test "1ra PARTE: 4" {
+		pepe.faltas(1)
+		pepe.categoria(cadete)
+		pepe.tipoDeBonoPorResultados(resultadosPorcentaje)
+		pepe.tipoDeBonoPorPresentismo(presentismoNormal)
+
+		assert.equals(23000, pepe.sueldo())
+	}
+
+	test "Casos de Prueba, última parte." {
+		medioTiempo.categoriaBase(cadete)
+		pepe.categoria(medioTiempo)
+		pepe.faltas(1)
+		pepe.tipoDeBonoPorResultados(resultadosPorcentaje)
+		pepe.tipoDeBonoPorPresentismo(presentismoDemagogico)
+
+		roque.tipoDeBonoPorResultados(resultadosMontoFijo)
+
+		ernesto.compañero(pepe)
+		ernesto.tipoDeBonoPorPresentismo(presentismoAjuste)
+
+		assert.equals(11500, pepe.sueldo())
+		assert.equals(37800, roque.sueldo())
+		assert.equals(10100, ernesto.sueldo())
+	}
 }
